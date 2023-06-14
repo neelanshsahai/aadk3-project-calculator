@@ -122,6 +122,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.tvEqual -> {
                 // Implement action for R.id.tvEqual
+                tvDisplay.text = try {
+                    calculate(tvDisplay.text.toString())
+                } catch (e: Exception) {
+                    e.toString()
+                }
             }
             else -> {
                 // Handle other views, if any
@@ -129,4 +134,35 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
+
+    private fun calculate(tvDisplayText: String): String? {
+        when(true) {
+            tvDisplayText.contains('+') -> {
+                val nums = tvDisplayText.split('+')
+                val n1 = nums[0].toBigDecimal()
+                val n2 = nums[1].toBigDecimal()
+                return (n1+n2).toString()
+            }
+            tvDisplayText.contains('-') -> {
+                val nums = tvDisplayText.split('-')
+                val n1 = nums[0].toBigDecimal()
+                val n2 = nums[1].toBigDecimal()
+                return (n1-n2).toString()
+            }
+            tvDisplayText.contains('*') -> {
+                val nums = tvDisplayText.split('*')
+                val n1 = nums[0].toBigDecimal()
+                val n2 = nums[1].toBigDecimal()
+                return (n1*n2).toString()
+            }
+            tvDisplayText.contains('/') -> {
+                val nums = tvDisplayText.split('/')
+                val n1 = nums[0].toBigDecimal()
+                val n2 = nums[1].toBigDecimal()
+                return (n1/n2).toString()
+            }
+            else -> return "Invalid Input"
+        }
+    }
+
 }
