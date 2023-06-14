@@ -159,7 +159,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val nums = tvDisplayText.split('/')
                 val n1 = nums[0].toBigDecimal()
                 val n2 = nums[1].toBigDecimal()
-                return (n1/n2).toString()
+                return (n1.toDouble()/n2.toDouble()).toString()
             }
             else -> return "Invalid Input"
         }
