@@ -44,8 +44,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         when(v?.id) {
             R.id.tvAc -> {
-                onClickDigit("")
-                Log.d("MyError","Running")
+                onClear()
             }
 
             R.id.tvbracket1 -> {
@@ -201,6 +200,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             tvResult.text = sum.toString()
         }
 
+
+    }
+
+    fun onClear(){
+
+        tvResult.text = "0"
 
     }
 
