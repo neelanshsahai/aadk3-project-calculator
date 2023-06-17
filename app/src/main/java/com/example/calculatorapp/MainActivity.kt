@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import java.lang.Exception
 
 // TODO 0: Clone the calc repo
 // TODO 1: Create a new branch <name_calc>
@@ -56,8 +57,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             R.id.tvDiv -> {
-
+                onEqual()
                 onClickDigit("/")
+
             }
 
             R.id.tv7 -> {
@@ -76,8 +78,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             R.id.tvMul -> {
-
+                onEqual()
                 onClickDigit("*")
+
             }
 
             R.id.tv4 -> {
@@ -96,8 +99,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             R.id.tvSub -> {
-
+                onEqual()
                 onClickDigit("-")
+
+
+
             }
 
             R.id.tv1 -> {
@@ -116,8 +122,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             R.id.tvAdd -> {
-
+                onEqual()
                 onClickDigit("+")
+
+
             }
 
             R.id.tv0 -> {
@@ -143,7 +151,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             else -> {
 
-                Log.d("MrError","Invalid Operation")
+                Log.d("Error","Invalid Operation")
 
             }
 
@@ -158,46 +166,50 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     fun onEqual(){
 
-        var text = tvResult.text
-        var sum = 0
+        var text = tvResult.text.toString()
+        var sum:Double = 0.0
+        var numbers = text.split("+","-","/","*")
 
-        if (text.contains("+")) {
-            var num = tvResult.text.split("+")
-            for(i in num){
-                sum += i.toInt()
+        if(numbers.size >= 2){
+
+            if (text.contains("+")) {
+                var num = tvResult.text.split("+")
+                for(i in num){
+                    sum += i.toDouble()
+                }
+                tvResult.text = sum.toString()
+
+
             }
-            tvResult.text = sum.toString()
 
+            if (text.contains("-")) {
+                var num = tvResult.text.split("-")
+                sum = num[0].toDouble()
+                for(i in num.drop(1)){
+                    sum -= i.toDouble()
+                }
+                tvResult.text = sum.toString()
 
-        }
-
-        if (text.contains("-")) {
-            var num = tvResult.text.split("-")
-            sum = num[0].toInt()
-            for(i in num.drop(1)){
-                sum -= i.toInt()
             }
-            tvResult.text = sum.toString()
 
-        }
+            if (text.contains("/")) {
+                var num = tvResult.text.split("/")
+                sum = num[0].toDouble()
+                for(i in num.drop(1)){
+                    sum /= i.toDouble()
+                }
+                tvResult.text = sum.toString()
 
-        if (text.contains("/")) {
-            var num = tvResult.text.split("/")
-            sum = num[0].toInt()
-            for(i in num.drop(1)){
-                sum /= i.toInt()
             }
-            tvResult.text = sum.toString()
 
-        }
-
-        if (text.contains("*")) {
-            var num = tvResult.text.split("*")
-            sum = 1
-            for(i in num){
-                sum *= i.toInt()
+            if (text.contains("*")) {
+                var num = tvResult.text.split("*")
+                sum = 1.0
+                for(i in num){
+                    sum *= i.toDouble()
+                }
+                tvResult.text = sum.toString()
             }
-            tvResult.text = sum.toString()
         }
 
 
