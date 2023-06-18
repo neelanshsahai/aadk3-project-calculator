@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.calculatorapp.databinding.ActivityMainBinding
+import java.util.Stack
 
 // TODO 0: Clone the calc repo
 // TODO 1: Create a new branch <name_calc>
@@ -130,7 +131,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.tvEqual -> {
                 // Implement action for R.id.tvEqual
                 binding.tvDisplay.text = try {
-                    calculate(binding.tvDisplay.text.toString())
+                    calculateParenthesis(binding.tvDisplay.text.toString())
                 } catch (e: Exception) {
                     e.toString()
                 }
@@ -142,34 +143,80 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun calculate(tvDisplayText: String): String? {
-        when(true) {
-            tvDisplayText.contains('+') -> {
-                val nums = tvDisplayText.split('+')
-                val n1 = nums[0].toBigDecimal()
-                val n2 = nums[1].toBigDecimal()
-                return (n1+n2).toString()
+    private fun calculateParenthesis(tvDisplayText: String): String {
+        var copyTxt = tvDisplayText
+        var openParenIdx = -1 // open parenthesis indices
+        var i = -1
+        while('(' in copyTxt || ')' in copyTxt) {
+            i++
+            if(copyTxt[i]=='(') openParenIdx = i
+            else if(copyTxt[i]==')') {
+                val closeParenIdx = i
+                val currNum = calculateExpression(copyTxt.substring(openParenIdx+1, closeParenIdx))
+                copyTxt = copyTxt.substring(0, openParenIdx)  +  currNum  +  copyTxt.substring(closeParenIdx+1, copyTxt.length)
+                i=-1
+                openParenIdx = -1
             }
-            tvDisplayText.contains('-') -> {
-                val nums = tvDisplayText.split('-')
-                val n1 = nums[0].toBigDecimal()
-                val n2 = nums[1].toBigDecimal()
-                return (n1-n2).toString()
-            }
-            tvDisplayText.contains('*') -> {
-                val nums = tvDisplayText.split('*')
-                val n1 = nums[0].toBigDecimal()
-                val n2 = nums[1].toBigDecimal()
-                return (n1*n2).toString()
-            }
-            tvDisplayText.contains('/') -> {
-                val nums = tvDisplayText.split('/')
-                val n1 = nums[0].toBigDecimal()
-                val n2 = nums[1].toBigDecimal()
-                return (n1.toDouble()/n2.toDouble()).toString()
-            }
-            else -> return "Invalid Input"
         }
+        return calculateExpression(copyTxt)
+    }
+
+    private fun calculateExpression(expression: String): String {
+        if('+' !in expression && '/' !in expression && '*' !in expression && ('-' !in expression || expression[0]=='-')) return expression
+        val nums = expression.split('+', '-', '*', '/').toMutableList()
+        var operatorIdx = -1
+        for(char in expression) {
+            if(char=='*') {
+                operatorIdx++
+                nums[operatorIdx] = (nums[operatorIdx].toDouble()*nums[operatorIdx+1].toDouble()).toString()
+                nums.removeAt(operatorIdx+1)
+                operatorIdx--
+            } else if(char=='/') {
+                operatorIdx++
+                nums[operatorIdx] = (nums[operatorIdx].toDouble()/nums[operatorIdx+1].toDouble()).toString()
+                nums.removeAt(operatorIdx+1)
+                operatorIdx--
+            } else if (char in listOf('+', '-')) {
+                operatorIdx++;
+            }
+        }
+        for(char in expression) {
+            if(char=='+') {
+                nums[0] = (nums[0].toDouble()+nums[1].toDouble()).toString()
+                nums.removeAt(1)
+            } else if(char=='-') {
+                nums[0] = (nums[0].toDouble()-nums[1].toDouble()).toString()
+                nums.removeAt(1)
+            }
+        }
+        return nums[0]
+    //        when(true) {
+//            tvDisplayText.contains('+') -> {
+//                val nums = tvDisplayText.split('+')
+//                val n1 = nums[0].toBigDecimal()
+//                val n2 = nums[1].toBigDecimal()
+//                return (n1+n2).toString()
+//            }
+//            tvDisplayText.contains('-') -> {
+//                val nums = tvDisplayText.split('-')
+//                val n1 = nums[0].toBigDecimal()
+//                val n2 = nums[1].toBigDecimal()
+//                return (n1-n2).toString()
+//            }
+//            tvDisplayText.contains('*') -> {
+//                val nums = tvDisplayText.split('*')
+//                val n1 = nums[0].toBigDecimal()
+//                val n2 = nums[1].toBigDecimal()
+//                return (n1*n2).toString()
+//            }
+//            tvDisplayText.contains('/') -> {
+//                val nums = tvDisplayText.split('/')
+//                val n1 = nums[0].toBigDecimal()
+//                val n2 = nums[1].toBigDecimal()
+//                return (n1.toDouble()/n2.toDouble()).toString()
+//            }
+//            else -> return "Invalid Input"
+//        }
     }
 
 }
