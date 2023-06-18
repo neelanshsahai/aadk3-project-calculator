@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.calculatorapp.databinding.ActivityMainBinding
 
 // TODO 0: Clone the calc repo
 // TODO 1: Create a new branch <name_calc>
@@ -12,118 +13,124 @@ import androidx.appcompat.app.AppCompatActivity
 // TODO 3: Share the link of your branch with me (on Discord or on WA)
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-    lateinit var tvDisplay: TextView
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        tvDisplay  = findViewById(R.id.tvDisplay)
+        val listOfTVs = listOf(
+            binding.tvAC,
+            binding.tvOpeningBracket,
+            binding.tvClosingBracket,
+            binding.tvDivide,
+            binding.tv7,
+            binding.tv8,
+            binding.tv9,
+            binding.tvMultiply,
+            binding.tv4,
+            binding.tv5,
+            binding.tv6,
+            binding.tvSubstract,
+            binding.tv1,
+            binding.tv2,
+            binding.tv3,
+            binding.tvAdd,
+            binding.tv0,
+            binding.tvDot,
+            binding.tvBackspace,
+            binding.tvEqual,
+        )
 
-        findViewById<TextView>(R.id.tvAC).setOnClickListener(this)
-        findViewById<TextView>(R.id.tvOpeningBracket).setOnClickListener(this)
-        findViewById<TextView>(R.id.tvClosingBracket).setOnClickListener(this)
-        findViewById<TextView>(R.id.tvDivide).setOnClickListener(this)
-        findViewById<TextView>(R.id.tv7).setOnClickListener(this)
-        findViewById<TextView>(R.id.tv8).setOnClickListener(this)
-        findViewById<TextView>(R.id.tv9).setOnClickListener(this)
-        findViewById<TextView>(R.id.tvMultiply).setOnClickListener(this)
-        findViewById<TextView>(R.id.tv4).setOnClickListener(this)
-        findViewById<TextView>(R.id.tv5).setOnClickListener(this)
-        findViewById<TextView>(R.id.tv6).setOnClickListener(this)
-        findViewById<TextView>(R.id.tvSubstract).setOnClickListener(this)
-        findViewById<TextView>(R.id.tv1).setOnClickListener(this)
-        findViewById<TextView>(R.id.tv2).setOnClickListener(this)
-        findViewById<TextView>(R.id.tv3).setOnClickListener(this)
-        findViewById<TextView>(R.id.tvAdd).setOnClickListener(this)
-        findViewById<TextView>(R.id.tv0).setOnClickListener(this)
-        findViewById<TextView>(R.id.tvDot).setOnClickListener(this)
-        findViewById<TextView>(R.id.tvBackspace).setOnClickListener(this)
-        findViewById<TextView>(R.id.tvEqual).setOnClickListener(this)
+        for (textView in listOfTVs) {
+            textView.setOnClickListener(this)
+        }
     }
 
     override fun onClick(v: View?) {
+        val tvDisplayText = binding.tvDisplay.text.toString()
         when (v?.id) {
             R.id.tvAC -> {
                 // Implement action for R.id.tvAC
-                tvDisplay.text = ""
+                binding.tvDisplay.text = ""
             }
             R.id.tvOpeningBracket -> {
                 // Implement action for R.id.tvOpeningBracket
-                tvDisplay.text = tvDisplay.text.toString() + "("
+                binding.tvDisplay.text = tvDisplayText + "("
             }
             R.id.tvClosingBracket -> {
                 // Implement action for R.id.tvClosingBracket
-                tvDisplay.text = tvDisplay.text.toString() + ")"
+                binding.tvDisplay.text = tvDisplayText + ")"
             }
             R.id.tvDivide -> {
                 // Implement action for R.id.tvDivide
-                tvDisplay.text = tvDisplay.text.toString() + "/"
+                binding.tvDisplay.text = tvDisplayText + "/"
             }
             R.id.tv7 -> {
                 // Implement action for R.id.tv7
-                tvDisplay.text = tvDisplay.text.toString() + "7"
+                binding.tvDisplay.text = tvDisplayText + "7"
             }
             R.id.tv8 -> {
                 // Implement action for R.id.tv8
-                tvDisplay.text = tvDisplay.text.toString() + "8"
+                binding.tvDisplay.text = tvDisplayText + "8"
             }
             R.id.tv9 -> {
                 // Implement action for R.id.tv9
-                tvDisplay.text = tvDisplay.text.toString() + "9"
+                binding.tvDisplay.text = tvDisplayText + "9"
             }
             R.id.tvMultiply -> {
                 // Implement action for R.id.tvMultiply
-                tvDisplay.text = tvDisplay.text.toString() + "*"
+                binding.tvDisplay.text = tvDisplayText + "*"
             }
             R.id.tv4 -> {
                 // Implement action for R.id.tv4
-                tvDisplay.text = tvDisplay.text.toString() + "4"
+                binding.tvDisplay.text = tvDisplayText + "4"
             }
             R.id.tv5 -> {
                 // Implement action for R.id.tv5
-                tvDisplay.text = tvDisplay.text.toString() + "5"
+                binding.tvDisplay.text = tvDisplayText + "5"
             }
             R.id.tv6 -> {
                 // Implement action for R.id.tv6
-                tvDisplay.text = tvDisplay.text.toString() + "6"
+                binding.tvDisplay.text = tvDisplayText + "6"
             }
             R.id.tvSubstract -> {
                 // Implement action for R.id.tvSubstract
-                tvDisplay.text = tvDisplay.text.toString() + "-"
+                binding.tvDisplay.text = tvDisplayText + "-"
             }
             R.id.tv1 -> {
                 // Implement action for R.id.tv1
-                tvDisplay.text = tvDisplay.text.toString() + "1"
+                binding.tvDisplay.text = tvDisplayText + "1"
             }
             R.id.tv2 -> {
                 // Implement action for R.id.tv2
-                tvDisplay.text = tvDisplay.text.toString() + "2"
+                binding.tvDisplay.text = tvDisplayText + "2"
             }
             R.id.tv3 -> {
                 // Implement action for R.id.tv3
-                tvDisplay.text = tvDisplay.text.toString() + "3"
+                binding.tvDisplay.text = tvDisplayText + "3"
             }
             R.id.tvAdd -> {
                 // Implement action for R.id.tvAdd
-                tvDisplay.text = tvDisplay.text.toString() + "+"
+                binding.tvDisplay.text = tvDisplayText + "+"
             }
             R.id.tv0 -> {
                 // Implement action for R.id.tv0
-                tvDisplay.text = tvDisplay.text.toString() + "0"
+                binding.tvDisplay.text = tvDisplayText + "0"
             }
             R.id.tvDot -> {
                 // Implement action for R.id.tvDot
-                tvDisplay.text = tvDisplay.text.toString() + "."
+                binding.tvDisplay.text = tvDisplayText + "."
             }
             R.id.tvBackspace -> {
                 // Implement action for R.id.tvBackspace
-                if(tvDisplay.text.toString()!="")
-                tvDisplay.text = tvDisplay.text.toString().substring(0,tvDisplay.text.toString().length-1)
+                if(tvDisplayText!="")
+                binding.tvDisplay.text = tvDisplayText.substring(0,tvDisplayText.length-1)
             }
             R.id.tvEqual -> {
                 // Implement action for R.id.tvEqual
-                tvDisplay.text = try {
-                    calculate(tvDisplay.text.toString())
+                binding.tvDisplay.text = try {
+                    calculate(binding.tvDisplay.text.toString())
                 } catch (e: Exception) {
                     e.toString()
                 }
