@@ -13,11 +13,13 @@ import java.lang.Exception
 // TODO 3: Share the link of your branch with me (on Discord or on WA)
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var tvResult: TextView
+    lateinit var myCalculatorOperations: MyCalculatorOperations
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         tvResult = findViewById(R.id.tvResult)
+        myCalculatorOperations = MyCalculatorOperations(tvResult)
         findViewById<TextView>(R.id.tvAc).setOnClickListener(this)
         findViewById<TextView>(R.id.tvbracket1).setOnClickListener(this)
         findViewById<TextView>(R.id.tvbracket2).setOnClickListener(this)
@@ -45,62 +47,62 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         when(v?.id) {
             R.id.tvAc -> {
-                onClear()
+                myCalculatorOperations.onClear()
             }
 
             R.id.tvbracket1 -> {
-                onClickDigit("(")
+                myCalculatorOperations.onClickDigit("(")
             }
 
             R.id.tvbracket2 -> {
-                onClickDigit(")")
+                myCalculatorOperations.onClickDigit(")")
             }
 
             R.id.tvDiv -> {
-                onEqual()
-                onClickDigit("/")
+                myCalculatorOperations.onEqual()
+                myCalculatorOperations.onClickDigit("/")
 
             }
 
             R.id.tv7 -> {
 
-                onClickDigit("7")
+                myCalculatorOperations.onClickDigit("7")
             }
 
             R.id.tv8 -> {
 
-                onClickDigit("8")
+                myCalculatorOperations.onClickDigit("8")
             }
 
             R.id.tv9 -> {
 
-                onClickDigit("9")
+                myCalculatorOperations.onClickDigit("9")
             }
 
             R.id.tvMul -> {
-                onEqual()
-                onClickDigit("*")
+                myCalculatorOperations.onEqual()
+                myCalculatorOperations.onClickDigit("*")
 
             }
 
             R.id.tv4 -> {
 
-                onClickDigit("4")
+                myCalculatorOperations.onClickDigit("4")
             }
 
             R.id.tv5 -> {
 
-                onClickDigit("5")
+                myCalculatorOperations.onClickDigit("5")
             }
 
             R.id.tv6 -> {
 
-                onClickDigit("6")
+                myCalculatorOperations.onClickDigit("6")
             }
 
             R.id.tvSub -> {
-                onEqual()
-                onClickDigit("-")
+                myCalculatorOperations.onEqual()
+                myCalculatorOperations.onClickDigit("-")
 
 
 
@@ -108,34 +110,34 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             R.id.tv1 -> {
 
-                onClickDigit("1")
+                myCalculatorOperations.onClickDigit("1")
             }
 
             R.id.tv2 -> {
 
-                onClickDigit("2")
+                myCalculatorOperations.onClickDigit("2")
             }
 
             R.id.tv3 -> {
 
-                onClickDigit("3")
+                myCalculatorOperations.onClickDigit("3")
             }
 
             R.id.tvAdd -> {
-                onEqual()
-                onClickDigit("+")
+                myCalculatorOperations.onEqual()
+                myCalculatorOperations.onClickDigit("+")
 
 
             }
 
             R.id.tv0 -> {
 
-                onClickDigit("0")
+                myCalculatorOperations.onClickDigit("0")
             }
 
             R.id.tvDot -> {
 
-                onClickDigit(".")
+                myCalculatorOperations.onClickDigit(".")
             }
 
             R.id.tvBackSpace -> {
@@ -146,7 +148,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             R.id.tvAns -> {
-                onEqual()
+                myCalculatorOperations.onEqual()
             }
 
             else -> {
@@ -158,67 +160,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    fun onClickDigit(text:String){
 
-        tvResult.append(text)
-
-    }
-
-    fun onEqual(){
-
-        var text = tvResult.text.toString()
-        var sum:Double = 0.0
-        var numbers = text.split("+","-","/","*")
-
-        if(numbers.size >= 2){
-
-            if (text.contains("+")) {
-                var num = tvResult.text.split("+")
-                for(i in num){
-                    sum += i.toDouble()
-                }
-                tvResult.text = sum.toString()
-
-
-            }
-
-            if (text.contains("-")) {
-                var num = tvResult.text.split("-")
-                sum = num[0].toDouble()
-                for(i in num.drop(1)){
-                    sum -= i.toDouble()
-                }
-                tvResult.text = sum.toString()
-
-            }
-
-            if (text.contains("/")) {
-                var num = tvResult.text.split("/")
-                sum = num[0].toDouble()
-                for(i in num.drop(1)){
-                    sum /= i.toDouble()
-                }
-                tvResult.text = sum.toString()
-
-            }
-
-            if (text.contains("*")) {
-                var num = tvResult.text.split("*")
-                sum = 1.0
-                for(i in num){
-                    sum *= i.toDouble()
-                }
-                tvResult.text = sum.toString()
-            }
-        }
-
-
-    }
-
-    fun onClear(){
-
-        tvResult.text = "0"
-
-    }
 
 }
