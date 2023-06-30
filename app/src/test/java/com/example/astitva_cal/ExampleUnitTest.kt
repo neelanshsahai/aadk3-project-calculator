@@ -1,4 +1,4 @@
-package com.example.calculatorapp
+package com.example.astitva_cal
 
 import org.junit.Test
 
