@@ -17,7 +17,7 @@
         android:padding="16dp"
         android:text="0"
         android:textColor="@color/text"
-        android:textSize="28sp"
+        android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +49,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:gravity="center"
                 android:id="@+id/tvAc"
                 android:background="@drawable/border_bg"
@@ -60,7 +60,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:gravity="center"
                 android:background="@drawable/border_bg"
                 android:textColor="@color/text"
@@ -71,7 +71,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:gravity="center"
                 android:background="@drawable/border_bg"
                 android:textColor="@color/text"
@@ -82,7 +82,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:gravity="center"
                 android:background="@drawable/border_bg"
                 android:textColor="@color/text"
@@ -109,7 +109,7 @@
                 android:id="@+id/tv7"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:gravity="center"
                 android:background="@drawable/border_bg"
                 android:textColor="@color/text"
@@ -119,7 +119,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:gravity="center"
                 android:background="@drawable/border_bg"
                 android:textColor="@color/text"
@@ -130,7 +130,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:gravity="center"
                 android:background="@drawable/border_bg"
                 android:textColor="@color/text"
@@ -141,7 +141,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:gravity="center"
                 android:background="@drawable/border_bg"
                 android:textColor="@color/text"
@@ -166,7 +166,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:gravity="center"
                 android:background="@drawable/border_bg"
                 android:textColor="@color/text"
@@ -177,7 +177,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:gravity="center"
                 android:background="@drawable/border_bg"
                 android:textColor="@color/text"
@@ -188,7 +188,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:gravity="center"
                 android:background="@drawable/border_bg"
                 android:textColor="@color/text"
@@ -199,7 +199,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:gravity="center"
                 android:background="@drawable/border_bg"
                 android:textColor="@color/text"
@@ -224,7 +224,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:gravity="center"
                 android:background="@drawable/border_bg"
                 android:textColor="@color/text"
@@ -235,7 +235,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:gravity="center"
                 android:background="@drawable/border_bg"
                 android:textColor="@color/text"
@@ -246,7 +246,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:gravity="center"
                 android:background="@drawable/border_bg"
                 android:textColor="@color/text"
@@ -257,7 +257,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:gravity="center"
                 android:background="@drawable/border_bg"
                 android:textColor="@color/text"
@@ -282,7 +282,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:gravity="center"
                 android:background="@drawable/border_bg"
                 android:textColor="@color/text"
@@ -293,7 +293,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:gravity="center"
                 android:background="@drawable/border_bg"
                 android:textColor="@color/text"
@@ -304,7 +304,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:gravity="center"
                 android:background="@drawable/border_bg"
                 android:textColor="@color/text"
@@ -315,7 +315,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:gravity="center"
                 android:background="@drawable/border_bg"
                 android:textColor="@color/text"
