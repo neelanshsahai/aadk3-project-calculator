@@ -4,17 +4,20 @@ plugins {
 }
 
 android {
-    namespace 'com.example.calculatorapp'
+    namespace 'com.example.astitva_cal'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.calculatorapp"
+        applicationId "com.example.astitva_cal"
         minSdk 24
         targetSdk 33
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildFeatures {
+        viewBinding = true
     }
 
     buildTypes {
